@@ -17,6 +17,7 @@
                             <tr>
                                 <th>Nama</th>
                                 <th>Harga</th>
+                                <th>Aksi</th>
                                 @can('create', App\Models\Produk::class)
                                 <th>Actions</th>
                                 @endcan
@@ -28,7 +29,7 @@
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->harga }}</td>
                                 <td>
-                                    <a href="{{ route('produk.edit', $item->id) }}" class="btn btn-sm btn-rounded btn-warning">Ubah</a>
+                                 <a href="{{ route('produk.edit', $item->id) }}" class="btn btn-sm btn-rounded btn-warning">Ubah</a>
                                     <form action="{{ route('produk.destroy', $item->id) }}" method="post" style="display: inline-block;">
                                         @method('DELETE')
                                         @csrf
