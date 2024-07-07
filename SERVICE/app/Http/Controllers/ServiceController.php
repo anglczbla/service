@@ -8,20 +8,19 @@ use App\Models\Produk;
 
 class ServiceController extends Controller
 {
+    
     public function index()
     {
-        // if(auth()->user()->role == 'P'){
-        //     $service = Service::where('user_id', auth()->user()->id)->get();
-        // }else{
-        //     $service = Service::all();
-        // }
-        return view('service.index');
-
+        if(auth()->user()->role == 'P'){
+            $service = Service::where('user_id', auth()->user()->id)->get();
+        }else{
+            $service = Service::all();
+        }
+        return view('service.index', compact('service'));
     }
 
     public function create()
     {
-        // Ambil semua produk untuk dropdown
         $produks = Produk::all();
         return view('service.create', compact('produks'));
     }
@@ -40,7 +39,7 @@ class ServiceController extends Controller
 
         Service::create($request->all());
 
-        return redirect()->route('service.index')->with('success', 'Service berhasil ditamuntuk selanjutnya tolong di masuk ke bagian transaksi yang sudah kami sediakan');
+        return redirect()->route('service.index')->with('success', 'Service berhasil ditambahkan');
     }
 
     public function edit($id)
@@ -72,5 +71,4 @@ class ServiceController extends Controller
 
         return redirect()->route('service.index')->with('success', 'Service berhasil dihapus');
     }
-    
 }

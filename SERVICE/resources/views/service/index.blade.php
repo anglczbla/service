@@ -25,9 +25,9 @@
                     <tbody>
                         @foreach ($service as $item)
                         <tr>
-                            <td>{{ $item ['nama'] }}</td>
-                            <td>{{$item["service"]["nama"]}}</td> {{-- Menampilkan nama produk --}}
-                            <td>{{ $item ['keluhan'] }}</td>
+                            <td>{{ $item->nama }}</td>
+                            <td>{{ $item->produk->nama }}</td> {{-- Menampilkan nama produk --}}
+                            <td>{{ $item->keluhan }}</td>
                             <td>{{ $item->produk->harga }}</td> {{-- Menampilkan harga produk --}}
                             <td>
                                 <div class="btn-group" role="group" aria-label="Actions">
